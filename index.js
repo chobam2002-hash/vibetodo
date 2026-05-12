@@ -3,14 +3,15 @@ require('dotenv').config();
 const cors = require('cors');
 const express = require('express');
 const mongoose = require('mongoose');
-
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/backend2';
 
-/** Live Server 등 프론트(5500) — localhost / 127.0.0.1 은 서로 다른 Origin */
+/** Live Server(5500), Vite dev(5173) — localhost / 127.0.0.1 은 서로 다른 Origin */
 const DEFAULT_CLIENT_ORIGINS = [
   'http://localhost:5500',
   'http://127.0.0.1:5500',
+  'http://localhost:5173',
+  'http://127.0.0.1:5173',
 ];
 
 function getAllowedOrigins() {
